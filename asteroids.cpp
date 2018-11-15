@@ -1,12 +1,12 @@
 //To compile the file gcc main.cpp -lstdc++ -o main
-
-  #include "objects.h" //Header items to be used in the program (planet struct, asteroid struct and functions)
+#include "objects.cpp" //Header items to be used in the program (planet struct, asteroid struct and functions)
 #include  <stdlib.h>
 #include <string>
 #include <vector>
+#include <random>
 #include <iostream>
 #include <fstream>
-  using namespace std;
+using namespace std;
 
 
   int main (int argc, char **argv){
@@ -28,34 +28,29 @@ else{
   int num_iterations=atoi(argv[2]);
   int num_planets=atoi(argv[3]);
   int seed=atoi(argv[4]);
-  Map map =  Map(seed);
-  vector <asteroid> asteroids;//Vector of asteroids
+  Map map =  Map(seed);;
+  vector <Map::Asteroid> asteroids;//Vector of asteroids
+
+//  vector <Map::Planet> planets;//Vector of asteroids
 
   ofstream outfile ("init_conf.txt");
 if (outfile.is_open())
 {
   outfile << num_asteroids << " " << num_iterations << " " << num_planets << " " << seed << "\n";
+  for(int i=0;i<num_asteroids;i++){
+    asteroids.push_back(Map::Asteroid());
+    map.initializeAsteroid(&asteroids[i]);
+    cout << "Position of asteroid " << i << " is " << asteroids[i].x << endl;
+    cout << "Position of asteroid "  << i << " is " << asteroids[i].y << endl;
+    cout << "Mass of asteroid "  << i << " is " << asteroids[i].mass << endl;
+    outfile << asteroids[i].x << " " << asteroids[i].y << " " << asteroids[i].mass << endl;
+   }
   outfile.close();
 }
 else{
-  cout << "Unable to open file";
+  cout << "Unable to create file";
   return -1;
 }
-
-
-  for(int i=0;i<num_asteroids;i++){
-    asteroids.push_back(map.asteroid());
-    asteroids[i].setPositionAsteroid(&asteroids[i]);
-    cout << "Position of asteroid " << asteroids[i].x << endl;
-  }
-  // cout << "Enter number of asteroids " << "\n";
-  // cin >> num_asteroids;
-  // cout << "Enter number of iterations " << "\n";
-  // cin >> num_iterations;
-  // cout << "Enter number of planets " << "\n";
-  // cin >> num_planets;
-  // cout << "Enter the seed " << "\n";
-  // cin >> seed;
 
   cout << "Asteroids: " << num_asteroids << " Iterations: " << num_iterations
   << " Planets: " << num_planets << " Seed: " << seed << " \n";
