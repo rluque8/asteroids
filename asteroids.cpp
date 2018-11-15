@@ -1,9 +1,11 @@
 //To compile the file gcc main.cpp -lstdc++ -o main
+
   #include "objects.h" //Header items to be used in the program (planet struct, asteroid struct and functions)
 #include  <stdlib.h>
-  #include <string>
-  #include <vector>
-  #include <iostream>
+#include <string>
+#include <vector>
+#include <iostream>
+#include <fstream>
   using namespace std;
 
 
@@ -28,6 +30,19 @@ else{
   int num_iterations=atoi(argv[2]);
   int num_planets=atoi(argv[3]);
   int seed=atoi(argv[4]);
+
+  ofstream outfile ("init_conf.txt");
+if (outfile.is_open())
+{
+  outfile << num_asteroids << " " << num_iterations << " " << num_planets << " " << seed << "\n";
+  outfile.close();
+}
+else{
+  cout << "Unable to open file";
+  return -1;
+}
+
+
   for(int i=0;i<num_asteroids;i++){
     asteroids.push_back(asteroid());
     asteroids[i].setPositionAsteroid(&asteroids[i]);
