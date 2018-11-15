@@ -10,8 +10,6 @@
 
 
   int main (int argc, char **argv){
-  vector <asteroid> asteroids;//Vector of asteroids
-
 
 
   // int num_asteroids;
@@ -30,6 +28,8 @@ else{
   int num_iterations=atoi(argv[2]);
   int num_planets=atoi(argv[3]);
   int seed=atoi(argv[4]);
+  Map map =  Map(seed);
+  vector <asteroid> asteroids;//Vector of asteroids
 
   ofstream outfile ("init_conf.txt");
 if (outfile.is_open())
@@ -44,7 +44,7 @@ else{
 
 
   for(int i=0;i<num_asteroids;i++){
-    asteroids.push_back(asteroid());
+    asteroids.push_back(map.asteroid());
     asteroids[i].setPositionAsteroid(&asteroids[i]);
     cout << "Position of asteroid " << asteroids[i].x << endl;
   }
