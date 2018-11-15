@@ -1,47 +1,27 @@
-#include <iostream>
-#include <string>
-#include <vector>
+//To compile the file gcc main.cpp -lstdc++ -o main
+  #include "objects.h" //Header items to be used in the program (planet struct, asteroid struct and functions)
 
-using namespace std;
-
-struct asteroid{
-  double x,y;
-  double mass;
-  double velocity;
-};
-
-void setPositionAsteroid(asteroid a);
-void collision(asteroid a, asteroid b);
-
-struct planet{
-  double x=0,y=0;
-  double gravity;
-  double mass;
-};
+  #include <string>
+  #include <vector>
+  #include <iostream>
+  using namespace std;
 
 
-// Random distributions
-// default_random_engine re{seed};
-// uniform_real_distribution<double> xdist{0.0, std::nextafter(width,
-// std :: numeric_limits<double>::max())};
-// uniform_real_distribution<double> ydist{0.0, std::nextafter(height,
-// std :: numeric_limits<double>::max())};
-// normal_distribution<double> mdist{mass, sdm};
+  int main (int argc, char **argv){
+  vector <asteroid> asteroids;//Vector of asteroids
+  int asteroid_number = 0;
 
-void collision(asteroid a, asteroid b){
-  double aux= a.velocity;
-  a.velocity=b.velocity;
-  b.velocity=aux;
-}
+  cout << "Enter number of asteroids " << "\n";
+  cin >> asteroid_number;
+    for( int i = 0; i< asteroid_number; i++){
+      asteroids.push_back(asteroid()); //Adding one element to the vector
+      asteroids[i].mass = 3 * i + 5;
+      cout << "Mass for asteroid " << i << " is " << asteroids[i].mass << "\n";
+      setPositionAsteroid(asteroids[i]);
+      asteroids[i].x = 8;
+      cout << "Position of asteroid " << asteroids[i].x << endl;
+    }
 
-void setPositionAsteroid(asteroid a){
-  a.x=xdist(re);
-  a.y=ydist(re);
-}
 
-int main(){
-  struct asteroid a1;
-  setPositionAsteroid(a1);
-  cout << "Position of asteroid " << a1.x << endl;
-
-}
+    return 0;
+  }
