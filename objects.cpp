@@ -42,13 +42,13 @@ struct Planet{
         }
 
     void setPositionAsteroid(Asteroid *a){
-          a->x = xdist(re);
-          a->y = ydist(re);
+      a->x = round(xdist(re));
+      a->y = round(ydist(re));
         }
     void initializeAsteroid(Asteroid *a){
-      a->x = xdist(re);
-      a->y = ydist(re);
-      a -> mass = mdist(re);
+      a->x = round(xdist(re));
+      a->y = round(ydist(re));
+      a -> mass = round(mdist(re));
     }
     void collision(Asteroid a, Asteroid b){
       double aux= a.velocity;
@@ -56,7 +56,9 @@ struct Planet{
       b.velocity=aux;
         }
 
-
+double round(double number){
+  return (int) (number * 1000.0)/1000.0;
+}
 
 
 };

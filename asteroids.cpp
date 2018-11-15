@@ -1,4 +1,4 @@
-//To compile the file gcc main.cpp -lstdc++ -o main
+//To compile the file  g++ -std=c++14  asteroids.cpp objects.cpp  -L /usr/lib/gcc/x86_64-linux-gnu/5/ -Wall -Wextra -Wno-deprecated -Werror -pedantic -pedantic-errors
 #include "objects.cpp" //Header items to be used in the program (planet struct, asteroid struct and functions)
 #include  <stdlib.h>
 #include <string>
