@@ -1,6 +1,6 @@
 //To compile the file gcc main.cpp -lstdc++ -o main
   #include "objects.h" //Header items to be used in the program (planet struct, asteroid struct and functions)
-
+#include  <stdlib.h>
   #include <string>
   #include <vector>
   #include <iostream>
@@ -9,10 +9,7 @@
 
   int main (int argc, char **argv){
   vector <asteroid> asteroids;//Vector of asteroids
-  int num_asteroids=atoi(argv[1]);
-  int num_iterations=atoi(argv[2]);
-  int num_planets=atoi(argv[3]);
-  int seed=atoi(argv[4]);
+
 
 
   // int num_asteroids;
@@ -27,6 +24,10 @@
     return -1;
   }
 else{
+  int num_asteroids=atoi(argv[1]);
+  int num_iterations=atoi(argv[2]);
+  int num_planets=atoi(argv[3]);
+  int seed=atoi(argv[4]);
   for(int i=0;i<num_asteroids;i++){
     asteroids.push_back(asteroid());
     asteroids[i].setPositionAsteroid(&asteroids[i]);
