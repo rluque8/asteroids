@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <random>
+
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -39,7 +40,7 @@ if (outfile.is_open())
   outfile << num_asteroids << " " << num_iterations << " " << num_planets << " " << seed << "\n";
   for(int i=0;i<num_asteroids;i++){
     asteroids.push_back(Map::Asteroid());
-    map.initializeAsteroid(&asteroids[i]);
+    map.initializeAsteroid(&asteroids[i], i);
     cout << "Position of asteroid " << i << " is " << asteroids[i].x << endl;
     cout << "Position of asteroid "  << i << " is " << asteroids[i].y << endl;
     cout << "Mass of asteroid "  << i << " is " << asteroids[i].mass << endl;
@@ -54,6 +55,15 @@ else{
 
   cout << "Asteroids: " << num_asteroids << " Iterations: " << num_iterations
   << " Planets: " << num_planets << " Seed: " << seed << " \n";
+  for(int i = 0; i < num_asteroids; i++){
+    for(int j = 0; j < num_asteroids; j++){
+      if( i == j){
+        continue;
+      }
+      map.computeDistance(&asteroids[i], &asteroids[j]);
+      cout << "Distance of " << i << " and " << j << " is " << asteroids[i].distances[j] << endl;
+    }
+  }
     // for( int i = 0; i< num_asteroids; i++){
     //   asteroids.push_back(asteroid()); //Adding one element to the vector
     //   asteroids[i].mass = 3 * i + 5;

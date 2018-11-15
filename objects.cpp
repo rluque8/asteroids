@@ -4,7 +4,8 @@
 #include <random>
 #include <stdlib.h>
 #include <math.h>
-
+#include <cmath>
+#include <map>
 using namespace std;
 class Map {
 public:
@@ -26,6 +27,8 @@ public:
   double x,y;
   double mass;
   double velocity;
+  int asteroid_id; //Le damos un id al asteroide para identificarlo luego en el mapeo
+  map<int, double> distances;
 };
 
 struct Planet{
@@ -45,10 +48,16 @@ struct Planet{
       a->x = round(xdist(re));
       a->y = round(ydist(re));
         }
-    void initializeAsteroid(Asteroid *a){
+    void initializeAsteroid(Asteroid *a, int id){
       a->x = round(xdist(re));
       a->y = round(ydist(re));
       a -> mass = round(mdist(re));
+      a->asteroid_id = id;
+    }
+
+    void computeDistance(Asteroid *a, Asteroid *b){
+      double distance = sqrt(pow((a->x - b->x),2) + pow((a->y - b->y),2));
+      a->distances.insert(make_pair(b->asteroid_id, distance)); //Stores the key vaue pair in asteroids map
     }
     void collision(Asteroid a, Asteroid b){
       double aux= a.velocity;
