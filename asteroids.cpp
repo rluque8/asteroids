@@ -8,6 +8,7 @@
 
 
   int main (int argc, char **argv){
+
   vector <asteroid> asteroids;//Vector of asteroids
   int asteroid_number = 0;
 
@@ -17,8 +18,8 @@
       asteroids.push_back(asteroid()); //Adding one element to the vector
       asteroids[i].mass = 3 * i + 5;
       cout << "Mass for asteroid " << i << " is " << asteroids[i].mass << "\n";
-      setPositionAsteroid(asteroids[i]);
-      asteroids[i].x = 8;
+      asteroids[i].setPositionAsteroid(&asteroids[i]);
+      //asteroids[i].x = 8;
       cout << "Position of asteroid " << asteroids[i].x << endl;
     }
 
