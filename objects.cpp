@@ -18,10 +18,10 @@ public:
     const double ray_width	= 4;
     const double mass		= 1000;
     const double sdm		= 50;
-   default_random_engine re;
-   uniform_real_distribution<double> xdist;
-   uniform_real_distribution<double> ydist;
-   normal_distribution<double> mdist;
+   static default_random_engine re;
+   static uniform_real_distribution<double> xdist;
+   static uniform_real_distribution<double> ydist;
+   static normal_distribution<double> mdist;
 
   struct Asteroid{
   double x,y;
@@ -31,14 +31,14 @@ public:
   map<int, double> distances;
 };
 
-struct Planet{
+  struct Planet{
   double x=0,y=0;
   double gravity;
   double mass;
 };
 
-    Map(int seed){
-      re = default_random_engine{seed};
+    Map(unsigned int seed){
+      Map::re = default_random_engine{seed};
       Map::xdist =   uniform_real_distribution<double> {0.0, std::nextafter(width, numeric_limits<double>::max())};
       Map::ydist =   uniform_real_distribution<double> {0.0, std::nextafter(height, numeric_limits<double>::max())};
       Map::mdist =   normal_distribution<double> {mass, sdm};
@@ -59,7 +59,7 @@ struct Planet{
       double distance = sqrt(pow((a->x - b->x),2) + pow((a->y - b->y),2));
       a->distances.insert(make_pair(b->asteroid_id, distance)); //Stores the key vaue pair in asteroids map
     }
-    void collision(Asteroid a, Asteroid b){
+    void collision(Asteroid *a, Asteroid *b){
       double aux= a.velocity;
       a.velocity=b.velocity;
       b.velocity=aux;

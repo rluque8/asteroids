@@ -29,7 +29,7 @@ else{
   int num_iterations=atoi(argv[2]);
   int num_planets=atoi(argv[3]);
   int seed=atoi(argv[4]);
-  Map map =  Map(seed);;
+  Map map =  Map(seed);
   vector <Map::Asteroid> asteroids;//Vector of asteroids
 
 //  vector <Map::Planet> planets;//Vector of asteroids
@@ -64,14 +64,7 @@ else{
       cout << "Distance of " << i << " and " << j << " is " << asteroids[i].distances[j] << endl;
     }
   }
-    // for( int i = 0; i< num_asteroids; i++){
-    //   asteroids.push_back(asteroid()); //Adding one element to the vector
-    //   asteroids[i].mass = 3 * i + 5;
-    //   cout << "Mass for asteroid " << i << " is " << asteroids[i].mass << "\n";
-    //   asteroids[i].setPositionAsteroid(&asteroids[i]);
-    //   //asteroids[i].x = 8;
-    //   cout << "Position of asteroid " << asteroids[i].x << endl;
-    // }
+    
 
 
     return 0;

@@ -22,8 +22,8 @@ class Map {
   static normal_distribution<double> mdist;
 
 
-    Map(int seed){
-      re = default_random_engine{seed};
+    Map(unsigned long seed){
+       re = static_cast<unsigned int> (default_random_engine{seed});
        xdist =   uniform_real_distribution<double> {0.0, std::nextafter(width, numeric_limits<double>::max())};
        ydist =   uniform_real_distribution<double> {0.0, std::nextafter(height, numeric_limits<double>::max())};
        mdist =   normal_distribution<double> {mass, sdm};
