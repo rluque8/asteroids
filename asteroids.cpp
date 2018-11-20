@@ -35,8 +35,7 @@ else{
 //  vector <Map::Planet> planets;//Vector of asteroids
 
   ofstream outfile ("init_conf.txt");
-if (outfile.is_open())
-{
+/*{
   outfile << num_asteroids << " " << num_iterations << " " << num_planets << " " << seed << "\n";
   for(int i=0;i<num_asteroids;i++){
     asteroids.push_back(Map::Asteroid());
@@ -51,7 +50,12 @@ if (outfile.is_open())
 else{
   cout << "Unable to create file";
   return -1;
-}
+}*/
+
+asteroids.push_back(Map::Asteroid());
+asteroids[0].x = 0;
+asteroids[0].y = 5;
+map.rebound(&asteroids[0]);
 
   cout << "Asteroids: " << num_asteroids << " Iterations: " << num_iterations
   << " Planets: " << num_planets << " Seed: " << seed << " \n";
@@ -64,7 +68,7 @@ else{
       cout << "Distance of " << i << " and " << j << " is " << asteroids[i].distances[j] << endl;
     }
   }
-    
+
 
 
     return 0;

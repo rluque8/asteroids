@@ -26,9 +26,10 @@ public:
   struct Asteroid{
   double x,y;
   double mass;
-  double velocity;
+  double velocity [2];
   int asteroid_id; //Le damos un id al asteroide para identificarlo luego en el mapeo
   map<int, double> distances;
+
 };
 
   struct Planet{
@@ -59,12 +60,32 @@ public:
       double distance = sqrt(pow((a->x - b->x),2) + pow((a->y - b->y),2));
       a->distances.insert(make_pair(b->asteroid_id, distance)); //Stores the key vaue pair in asteroids map
     }
-    void collision(Asteroid *a, Asteroid *b){
-      double aux= a.velocity;
-      a.velocity=b.velocity;
-      b.velocity=aux;
-        }
+    /*void collision(Asteroid *a, Asteroid *b){
+      double aux= a -> velocity;
+      a->velocity=b ->velocity;
+      b->velocity=aux;
+    }*/
 
+    void rebound(Asteroid *a){
+      if(a->x<=0){
+        a->x=2;
+        cout << "Rebound bc asteroid x < 0" << endl;
+      }
+      else if(a->y<=0){
+        a->y=2;
+        cout << "Rebound bc asteroid y < 0" << endl;
+      }
+      else if (a->x>= width){
+        a->x=(width-2);
+        cout << "Rebound bc asteroid x > 200" << endl;
+      }
+      else if (a->y>=height){
+        a->y=(height-2);
+        cout << "Rebound bc asteroid x > 200" << endl;
+      }
+      a->velocity[0]*=-1;
+      a->velocity[1]*=-1;
+    }
 double round(double number){
   return (int) (number * 1000.0)/1000.0;
 }
