@@ -113,11 +113,11 @@ public:
 
     }
     double alpha=atan(slope);
-    double afx=(gravity*(a->mass)*(b->mass))/(pow(a->distances.find(b->planet_id)->second),2)*cos(alpha);
+    double afx=(gravity*(a->mass)*(b->mass))/(pow((a->distances.find(b->asteroid_id)->second),2))*cos(alpha);
     if(afx>200){
       afx=200;
     }
-    double afy=(gravity*(a->mass)*(b->mass))/(pow(a->distances.find(b->planet_id)->second),2)*sin(alpha);
+    double afy=(gravity*(a->mass)*(b->mass))/(pow((a->distances.find(b->asteroid_id)->second),2))*sin(alpha);
     if(afy>200){
       afy=200;
     }
@@ -142,11 +142,11 @@ public:
 
     }
     double alpha=atan(slope);
-    double afx=(gravity*(a->mass)*(b->mass))/(pow(a->distances_planets.find(b->planet_id)->second),2)*cos(alpha);
+    double afx=(gravity*(a->mass)*(b->mass))/(pow((a->distances_planets.find(b->planet_id)->second),2))*cos(alpha);
     if(afx>200){
       afx=200;
     }
-    double afy=(gravity*(a->mass)*(b->mass))/(pow(a->distances_planets.find(b->planet_id)->second),2)*sin(alpha);
+    double afy=(gravity*(a->mass)*(b->mass))/(pow((a->distances_planets.find(b->planet_id)->second),2))*sin(alpha);
     if(afy>200){
       afy=200;
     }

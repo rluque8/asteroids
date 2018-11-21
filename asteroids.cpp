@@ -100,7 +100,7 @@ FILE * outFile;
 outFile = fopen("out.txt", "w");
 for(int k = 0; k < num_asteroids; k++){ //Writting final results
     cout << asteroids[k].x << " " << asteroids[k].y << " " << asteroids[k].mass << " VelocityX " << asteroids[k].velocityX << " VelocityY " << asteroids[k].velocityY << endl;
-    fprintf(outFile, "%f %f %f %f %f\n", asteroids[k].x, asteroids[k].y, asteroids[k].velocityX, asteroids[k].velocityY, asteroids[k].mass);
+    fprintf(outFile, "%.3f %.3f %.3f %.3f %.3f\n", asteroids[k].x, asteroids[k].y, asteroids[k].velocityX, asteroids[k].velocityY, asteroids[k].mass);
     //outfile << asteroids[k].x << " " << asteroids[k].y << " " <<asteroids[k].mass << endl;
   }
   fclose(outFile);
