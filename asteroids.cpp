@@ -31,11 +31,10 @@ else{
   int seed=atoi(argv[4]);
   Map map =  Map(seed);
   vector <Map::Asteroid> asteroids;//Vector of asteroids
-
-//  vector <Map::Planet> planets;//Vector of asteroids
+  vector <Map::Planet> planets;//Vector of asteroids
 
   ofstream outfile ("init_conf.txt");
-  /*
+
 if(outfile.is_open){
   outfile << num_asteroids << " " << num_iterations << " " << num_planets << " " << seed << "\n";
   for(int i=0;i<num_asteroids;i++){
@@ -46,21 +45,27 @@ if(outfile.is_open){
     cout << "Mass of asteroid "  << i << " is " << asteroids[i].mass << endl;
     outfile << asteroids[i].x << " " << asteroids[i].y << " " << asteroids[i].mass << endl;
    }
+
+   //Initializing the planets
+   for(int i=0;i<num_planets;i++){
+     planets.push_back(Map::Planet());
+     map.initializePlanet(&planets[i], i);
+     cout << "Position of planet " << i << " is " << planets[i].x << endl;
+     cout << "Position of planet "  << i << " is " << planets[i].y << endl;
+     cout << "Mass of planet "  << i << " is " << planets[i].mass << endl;
+     outfile << planets[i].x << " " << planets[i].y << " " << planets[i].mass << endl;
+    }
   outfile.close();
 }
 else{
   cout << "Unable to create file";
   return -1;
 }
-*/
-asteroids.push_back(Map::Asteroid());
-asteroids[0].x = 0;
-asteroids[0].y = 5;
-map.rebound(&asteroids[0]);
+
 
   cout << "Asteroids: " << num_asteroids << " Iterations: " << num_iterations
   << " Planets: " << num_planets << " Seed: " << seed << " \n";
-/*  for(int i = 0; i < num_asteroids; i++){
+  for(int i = 0; i < num_asteroids; i++){
     for(int j = 0; j < num_asteroids; j++){
       if( i == j){
         continue;
@@ -68,7 +73,7 @@ map.rebound(&asteroids[0]);
       map.computeDistance(&asteroids[i], &asteroids[j]);
       cout << "Distance of " << i << " and " << j << " is " << asteroids[i].distances[j] << endl;
     }
-  }*/
+  }
 
 
 
