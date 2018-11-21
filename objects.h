@@ -39,6 +39,16 @@ class Map {
       a->y = ydist(re);
     }
 
+    // void setVelocityVector(Asteroid *a){
+    //   setPositionAsteroid(&a);
+    //   double auxX=a->x,auxY=a->y;
+    //   Thread.Sleep(delta_t);
+    //   setPositionAsteroid(&a);
+    //   auxX= -1*auxX+a->x; //auxX_nueva-auxX_vieja
+    //   auxY= -1*auxY+a->y; //auxY_nueva-auxY_vieja
+    //   a->velocity[0]=auxX;
+    //   a->velocity[1]=auxY
+    // }
     void collision(Asteroid a, Asteroid b){
       double aux= a.velocity;
       a.velocity=b.velocity;
