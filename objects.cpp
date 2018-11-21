@@ -132,6 +132,9 @@ public:
     b->x=b->x+b->velocityX*delta_t;
     b->y=b->y+b->velocityY*delta_t;
     rebound(a);
+    if(computeDistance(a,b)<=2){
+      collision(a,b);
+    }
   }
 
   void normalModePlanet(Asteroid *a, Planet *b){
