@@ -84,6 +84,10 @@ public:
       break;
     }
   }
+  // #pragma omp parallel num_threads(num_asteroids){
+  //     #pragma omp parallel for
+  //     for(...)
+  // }
   double computeDistance(Asteroid *a, Asteroid *b){
     double distance = sqrt(pow((a->x - b->x),2) + pow((a->y - b->y),2));
     a->distances.insert(make_pair(b->asteroid_id, distance)); //Stores the key vaue pair in asteroids map
