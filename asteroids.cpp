@@ -67,9 +67,8 @@ if(initfile.is_open()){
 }
 
 
-
-
-
+//#pragma omp parallel num_threads(8){
+//#pragma omp for parallel
 for(int k = 0; k < num_iterations; k++){
 //initializing normal flow of the program
 cout << "Iteration: " << k << endl;
@@ -81,6 +80,7 @@ cout << "Iteration: " << k << endl;
       if(j < num_asteroids-1){
         map.computeDistance(&asteroids[i], &asteroids[j]); //COmputing Distance between asteroids
         cout << "Asteroids " <<  " Distance of " << i << " and " << j << " is " << asteroids[i].distances[j] << endl;
+        //#pragma omp barrier
         map.normalMode(&asteroids[i],&asteroids[j]);
       }
 
@@ -90,11 +90,13 @@ cout << "Iteration: " << k << endl;
         cout << "J is: " << j << endl;
         map.computeDistancePlanets(&asteroids[i], &planets[j]); //COmputing Distance between asteroids and planets
         cout << "Planets " <<  " Distance of " << i << " and " << j << " is " << asteroids[i].distances_planets[j] << endl;
+        //#pragma omp barrier
         map.normalModePlanet(&asteroids[i],&planets[j]);
       }
     }
   }
 }
+//}
 
 FILE * outFile;
 outFile = fopen("out.txt", "w");
