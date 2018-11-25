@@ -23,13 +23,14 @@ int main (int argc, char **argv){
     cout << " nasteroids-seq: Wrong arguments " << "\n";
     cout << " Correct use: " << "\n";
     cout << " nasteroids-seq num_asteroids num_iterations num_planets seed " << "\n";
-    #pragma omp cancel parallel
+    return -1;
   }
   else{
     int num_asteroids=atoi(argv[1]);
     int num_iterations=atoi(argv[2]);
     int num_planets=atoi(argv[3]);
     int seed=atoi(argv[4]);
+    int j;
     Map map =  Map(seed);
     vector <Map::Asteroid> asteroids;//Vector of asteroids
     vector <Map::Planet> planets;//Vector of asteroids
@@ -69,28 +70,47 @@ int main (int argc, char **argv){
 
       for(int k = 0; k < num_iterations; k++){
         //initializing normal flow of the program
-        cout << "Iteration: " << k << endl;
-        #pragma omp for
+      //  cout << "Iteration: " << k << endl;
+        #pragma omp for private(j)
         for(int i = 0; i < num_asteroids; i++){
-          for(int j = 0; j < max(num_asteroids, num_planets); j++){
+          for(j = 0; j < max(num_asteroids, num_planets); j++){
             if( i == j){
               continue;
             }
             if(j < num_asteroids-1){
               map.computeDistance(&asteroids[i], &asteroids[j]); //COmputing Distance between asteroids
-              cout << "Asteroids " <<  " Distance of " << i << " and " << j << " is " << asteroids[i].distances[j] << endl;
-              #pragma omp barrier
-              map.normalMode(&asteroids[i],&asteroids[j]);
+              //cout << "Asteroids " <<  " Distance of " << i << " and " << j << " is " << asteroids[i].distances[j] << endl;
             }
 
             if(j > num_planets-1){
               continue;
             }else{
-              cout << "J is: " << j << endl;
+            //  cout << "J is: " << j << endl;
               map.computeDistancePlanets(&asteroids[i], &planets[j]); //COmputing Distance between asteroids and planets
-              cout << "Planets " <<  " Distance of " << i << " and " << j << " is " << asteroids[i].distances_planets[j] << endl;
-              #pragma omp barrier
-              map.normalModePlanet(&asteroids[i],&planets[j]);
+              //cout << "Planets " <<  " Distance of " << i << " and " << j << " is " << asteroids[i].distances_planets[j] << endl
+
+            }
+          }
+        }
+          #pragma omp barrier //Barrier to synchronize all the threads before getting into the computation and avoid critical sections
+        #pragma omp for private(j)
+        for(int i = 0; i < num_asteroids; i++){
+          for(j = 0; j < max(num_asteroids, num_planets); j++){
+            if( i == j){
+              continue;
+            }
+            if(j < num_asteroids-1){
+                map.normalMode(&asteroids[i],&asteroids[j]); //COmputing Normal movement of asteroids
+              //cout << "Asteroids " <<  " Distance of " << i << " and " << j << " is " << asteroids[i].distances[j] << endl;
+            }
+
+            if(j > num_planets-1){
+              continue;
+            }else{
+              //cout << "J is: " << j << endl;
+                map.normalModePlanet(&asteroids[i],&planets[j]); //COmputing normal movement of asteroids and planets
+              //cout << "Planets " <<  " Distance of " << i << " and " << j << " is " << asteroids[i].distances_planets[j] << endl
+
             }
           }
         }

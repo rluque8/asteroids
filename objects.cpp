@@ -185,7 +185,7 @@ public:
     }
     a->velocityX*=-1;
     a->velocityY*=-1;
-    cout << "X: " << a->x << "Y: " << a->y << endl;
+  //  cout << "X: " << a->x << "Y: " << a->y << endl;
   }
   double round(double number){
     return (int) (number * 1000.0)/1000.0;
