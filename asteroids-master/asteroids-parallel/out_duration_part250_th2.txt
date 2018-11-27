@@ -1,0 +1,67 @@
+RESULTS SEQUENTIAL IMPLEMENTATION
+For 150 asteroids, 50 iterations, 100 planets and 2000 seed: 
+Iteration: 1
+ requires : 2097494.000 ms
+Iteration: 2
+ requires : 2128774.000 ms
+Iteration: 3
+ requires : 2168262.000 ms
+Iteration: 4
+ requires : 2166009.000 ms
+Iteration: 5
+ requires : 2118618.000 ms
+Iteration: 6
+ requires : 2069276.000 ms
+Iteration: 7
+ requires : 2091609.000 ms
+Iteration: 8
+ requires : 2147958.000 ms
+Iteration: 9
+ requires : 2157038.000 ms
+Iteration: 10
+ requires : 2149436.000 ms
+The average out of 10 iterations is: 2129447.400 ms
+For 150 asteroids, 100 iterations, 100 planets and 2000 seed: 
+Iteration: 1
+ requires : 4251595.000 ms
+Iteration: 2
+ requires : 4313776.000 ms
+Iteration: 3
+ requires : 4297436.000 ms
+Iteration: 4
+ requires : 4250849.000 ms
+Iteration: 5
+ requires : 4250180.000 ms
+Iteration: 6
+ requires : 4230738.000 ms
+Iteration: 7
+ requires : 4180122.000 ms
+Iteration: 8
+ requires : 4222018.000 ms
+Iteration: 9
+ requires : 4188292.000 ms
+Iteration: 10
+ requires : 4116195.000 ms
+The average out of 10 iterations is: 4230120.100 ms
+For 150 asteroids, 200 iterations, 100 planets and 2000 seed: 
+Iteration: 1
+ requires : 8191353.000 ms
+Iteration: 2
+ requires : 8366102.000 ms
+Iteration: 3
+ requires : 8416482.000 ms
+Iteration: 4
+ requires : 8277322.000 ms
+Iteration: 5
+ requires : 8152528.000 ms
+Iteration: 6
+ requires : 8460730.000 ms
+Iteration: 7
+ requires : 8870353.000 ms
+Iteration: 8
+ requires : 8460623.000 ms
+Iteration: 9
+ requires : 8263181.000 ms
+Iteration: 10
+ requires : 8567106.000 ms
+The average out of 10 iterations is: 8402578.000 ms

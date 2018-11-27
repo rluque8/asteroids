@@ -1,0 +1,23 @@
+RESULTS SEQUENTIAL IMPLEMENTATION
+For 250 asteroids, 50 iterations, 250 planets and 2000 seed: 
+Iteration: 1
+ requires : 6840214.000 ms
+Iteration: 2
+ requires : 6879617.000 ms
+Iteration: 3
+ requires : 6898302.000 ms
+Iteration: 4
+ requires : 6939951.000 ms
+Iteration: 5
+ requires : 6870469.000 ms
+Iteration: 6
+ requires : 6871827.000 ms
+Iteration: 7
+ requires : 6922902.000 ms
+Iteration: 8
+ requires : 6865273.000 ms
+Iteration: 9
+ requires : 6860901.000 ms
+Iteration: 10
+ requires : 6911749.000 ms
+The average out of 10 iterations is: 6886120.500 ms
